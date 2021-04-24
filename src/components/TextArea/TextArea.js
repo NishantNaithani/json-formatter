@@ -4,7 +4,6 @@ const TextArea = ({ placeholder, value, onChange, ...rest }) => {
   return (
     <div>
       <textarea
-        style={{ resize: "none" }}
         {...rest}
         value={value}
         onChange={(event) => onChange(event.currentTarget.value)}

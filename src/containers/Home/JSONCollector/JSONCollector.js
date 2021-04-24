@@ -10,16 +10,14 @@ class JSONCollector extends Component {
   render() {
     const { json } = this.props;
     return (
-      <div>
-        <TextArea
-          placeholder={"Paste your stringified JSON here"}
-          rows="50"
-          cols="150"
-          required
-          value={json}
-          onChange={this.handleChange}
-        />
-      </div>
+      <TextArea
+        placeholder={"Paste your stringified JSON here"}
+        rows="47"
+        cols="100"
+        required
+        value={json}
+        onChange={this.handleChange}
+      />
     );
   }
 }
