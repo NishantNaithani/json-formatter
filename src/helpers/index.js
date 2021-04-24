@@ -15,3 +15,15 @@ export function createSpace(length) {
 
   return spacedString;
 }
+
+export function formatContent(content, type = null) {
+  if (type === "preFormatted") {
+    return <pre>{content}</pre>;
+  }
+
+  if (type === "code") {
+    return <code>{content}</code>;
+  }
+
+  return content;
+}

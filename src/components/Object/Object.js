@@ -2,7 +2,14 @@ import React from "react";
 
 import { createSpace } from "../../helpers";
 
-const ObjectComponent = ({ valueKey, value, callback = () => {}, space }) => {
+const ObjectComponent = ({
+  valueKey,
+  value,
+  callback = () => {},
+  space,
+  showKey,
+  initial,
+}) => {
   const updatedValue = Object.keys(value).map((newKey) =>
     callback({
       key: newKey,
@@ -14,9 +21,14 @@ const ObjectComponent = ({ valueKey, value, callback = () => {}, space }) => {
 
   return (
     <div>
-      <span>{`${createSpace(space)}"${valueKey}": {`}</span>
+      <span>
+        {(showKey && `${createSpace(space)}"${valueKey}": {`) ||
+          `${createSpace(space)}{`}
+      </span>
       {updatedValue}
-      <span>{`${createSpace(space)}}`}</span>
+      <span>
+        {(!initial && `${createSpace(space)}},`) || `${createSpace(space)}}`}
+      </span>
     </div>
   );
 };

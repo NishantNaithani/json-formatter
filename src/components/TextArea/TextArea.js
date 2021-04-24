@@ -1,19 +1,15 @@
 import React from "react";
 
-const TextArea = ({ label, error, errorMessage, value, onChange, ...rest }) => {
+const TextArea = ({ placeholder, value, onChange, ...rest }) => {
   return (
     <div>
-      <div>
-        <label>{label}</label>
-        {error && <p>{errorMessage}</p>}
-      </div>
-      <div>
-        <textarea
-          {...rest}
-          value={value}
-          onChange={(event) => onChange(event.currentTarget.value)}
-        />
-      </div>
+      <textarea
+        style={{ resize: "none" }}
+        {...rest}
+        value={value}
+        onChange={(event) => onChange(event.currentTarget.value)}
+        placeholder={placeholder}
+      />
     </div>
   );
 };
