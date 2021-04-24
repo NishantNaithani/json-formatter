@@ -15,14 +15,16 @@ Then just install the version you want to use: `nvm install 12.18.3`
 ```
 git clone https://github.com/NishantNaithani1997/pg-json-formatter.git
 cd pg-json-formatter/
-npm install
+npm install or yarn install
 ```
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+```
+npm start or yarn start
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

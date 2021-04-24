@@ -40,37 +40,31 @@ class Home extends Component {
   render() {
     const { json, finalJSON, error, show } = this.state;
     return (
-      <div style={{ fontFamily: "Arial" }}>
-        <h1 style={{ textAlign: "center" }}>JSON FORMATTER</h1>
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-          <JSONCollector
-            json={json}
-            error={error}
-            handleChange={this.handleChange}
-          />
-          <div
-            style={{
-              border: "1px solid black",
-              width: "50%",
-              height: "820px",
-              alignSelf: "flex-end",
-              overflow: "auto",
-            }}
-          >
+      <div className="container">
+        <h1 className="center">JSON FORMATTER</h1>
+        <div className="main">
+          <div className="json_collector">
+            <JSONCollector
+              json={json}
+              error={error}
+              handleChange={this.handleChange}
+            />
+          </div>
+          <div className="json_viewer">
             <JSONViewer
               json={finalJSON}
               show={show}
               error={error}
-              errorMessage={"Passed JSON string is not valid!"}
+              errorMessage="Passed JSON string is not valid!"
               handleChange={this.handleChange}
             />
           </div>
         </div>
-        <div style={{ textAlign: "center" }}>
+        <div className="center">
           <Button
             disabled={!json.length}
             onClick={this.handleSubmit}
-            buttonText={"PARSE STRING"}
+            buttonText="PARSE STRING"
           />
         </div>
       </div>

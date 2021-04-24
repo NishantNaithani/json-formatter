@@ -7,9 +7,7 @@ import { NumberComponent } from "../../../components/Number";
 import { StringComponent } from "../../../components/String";
 import { NullComponent } from "../../../components/Null";
 
-import { isJSONString, formatContent } from "../../../helpers";
-
-// const INITIAL_SPACE = 4;
+import { isJSONString } from "../../../helpers";
 
 const createNumberComponent = ({ key = null, value, spacing, showKey }) => {
   return (
@@ -136,11 +134,11 @@ const JSONViewer = ({
   if (show) {
     const outputJSON = createData(json);
 
-    return <>{outputJSON && <div>{formatContent(outputJSON, "code")}</div>}</>;
+    return <>{outputJSON && <div>{outputJSON}</div>}</>;
   }
 
   if (error) {
-    return <div>{formatContent(errorMessage, "code")}</div>;
+    return <div>{errorMessage}</div>;
   }
 
   return null;
