@@ -7,9 +7,9 @@ import { NumberComponent } from "../../../components/Number";
 import { StringComponent } from "../../../components/String";
 import { NullComponent } from "../../../components/Null";
 
-import { isJSONString } from "../../../helpers";
+import { isJSONString, formatContent } from "../../../helpers";
 
-const INITIAL_SPACE = 4;
+// const INITIAL_SPACE = 4;
 
 const createNumberComponent = ({ key = null, value, spacing, showKey }) => {
   return (
@@ -57,7 +57,7 @@ const createBooleanComponent = ({ key = null, value, spacing, showKey }) => {
   );
 };
 
-const createObjectComponent = ({ key, value, spacing }) => {
+const createObjectComponent = ({ key, value, spacing, showKey }) => {
   return (
     <ObjectComponent
       key={`object-component-${value}-${key}-${spacing}`}
@@ -65,6 +65,7 @@ const createObjectComponent = ({ key, value, spacing }) => {
       value={value}
       callback={createTypesComponent}
       space={spacing}
+      showKey={showKey}
     />
   );
 };
@@ -103,7 +104,7 @@ const createTypesComponent = ({ key, value, spacing, showKey }) => {
   }
 
   if (typeof value === "object" && value !== null) {
-    return createObjectComponent({ key, value, spacing });
+    return createObjectComponent({ key, value, spacing, showKey });
   }
 
   return null;
@@ -112,36 +113,36 @@ const createTypesComponent = ({ key, value, spacing, showKey }) => {
 const createData = (data) => {
   if (data && isJSONString(data)) {
     const parsedJSON = JSON.parse(data);
-    return Object.keys(parsedJSON).map((key) => {
-      const value = parsedJSON[key];
-      return createTypesComponent({
-        key,
-        value,
-        spacing: INITIAL_SPACE,
-        showKey: true,
-      });
-    });
+    return (
+      <ObjectComponent
+        key={`object-component-main`}
+        value={parsedJSON}
+        callback={createTypesComponent}
+        space={0}
+        initial
+      />
+    );
   }
 
   return null;
 };
 
-const JSONViewer = ({ json, show }) => {
+const JSONViewer = ({
+  json,
+  show,
+  error,
+  errorMessage = "JSON string is not valid!",
+}) => {
   if (show) {
     const outputJSON = createData(json);
 
-    return (
-      <>
-        {outputJSON && (
-          <div>
-            <span>{"{"}</span>
-            {outputJSON}
-            <span>{"}"}</span>
-          </div>
-        )}
-      </>
-    );
+    return <>{outputJSON && <div>{formatContent(outputJSON, "code")}</div>}</>;
   }
+
+  if (error) {
+    return <div>{formatContent(errorMessage, "code")}</div>;
+  }
+
   return null;
 };
 

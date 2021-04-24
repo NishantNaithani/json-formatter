@@ -11,7 +11,7 @@ const ArrayComponent = ({ valueKey, value, callback = () => {}, space }) => {
     <div>
       <span>{`${createSpace(space)}"${valueKey}": [`}</span>
       {updatedValue}
-      <span>{`${createSpace(space)}]`}</span>
+      <span>{`${createSpace(space)}],`}</span>
     </div>
   );
 };

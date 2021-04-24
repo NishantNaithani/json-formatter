@@ -7,8 +7,8 @@ const BooleanComponent = ({ valueKey, value, space, showKey }) => {
     <div>
       {(showKey &&
         valueKey &&
-        `${createSpace(space)}"${valueKey}": ${value}`) ||
-        `${createSpace(space)}${value}`}
+        `${createSpace(space)}"${valueKey}": ${value},`) ||
+        `${createSpace(space)}${value},`}
     </div>
   );
 };

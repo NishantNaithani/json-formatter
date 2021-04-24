@@ -8,24 +8,16 @@ class JSONCollector extends Component {
   };
 
   render() {
-    const { json, error } = this.props;
+    const { json } = this.props;
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-        }}
-      >
+      <div>
         <TextArea
-          label={"Paste your stringified JSON here:"}
+          placeholder={"Paste your stringified JSON here"}
           rows="50"
-          cols="100"
+          cols="150"
           required
           value={json}
           onChange={this.handleChange}
-          error={error}
-          errorMessage={"Please pass the correct stringified JSON string!"}
         />
       </div>
     );
