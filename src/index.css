@@ -3,6 +3,12 @@ html {
   font-family: Arial;
 }
 
+textarea {
+  resize: none;
+  width: 97%;
+  height: 100%;
+}
+
 .center {
   text-align: center;
 }
@@ -38,10 +44,4 @@ html {
 
 .button:disabled {
   background-color: #ace4d9;
-}
-
-textarea {
-  resize: none;
-  width: 97%;
-  height: 100%;
 }
