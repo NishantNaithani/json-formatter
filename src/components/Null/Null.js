@@ -2,11 +2,13 @@ import React from "react";
 
 import { createSpace } from "../../helpers";
 
-const NullComponent = ({ valueKey, space }) => {
+const NullComponent = ({ showKey, valueKey, space }) => {
   return (
     <div>
-      {(valueKey && `${createSpace(space)}"${valueKey}": ${null},`) ||
-        `${null},`}
+      {(showKey &&
+        valueKey &&
+        `${createSpace(space)}"${valueKey}": ${null},`) ||
+        `${createSpace(space)}${null},`}
     </div>
   );
 };
