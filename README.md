@@ -13,7 +13,7 @@ Then just install the version you want to use: `nvm install 12.18.3`
 ## Installation
 
 ```
-git clone https://github.com/NishantNaithani1997/pg-json-formatter.git
+git clone https://github.com/NishantNaithani/pg-json-formatter.git
 cd pg-json-formatter/
 npm install or yarn install
 ```
